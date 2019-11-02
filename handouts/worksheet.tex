@@ -57,44 +57,41 @@
 
 \begin{document}
 
-\section*{CSCE 156 - Lab 11.0 - Linked Lists - Worksheet}
+\section*{CSCE 156 - Lab 12.0 - Recursion - Worksheet}
 
 Names: \underline{\hspace{10cm}}
 
-Note: as you write these test cases, you can place them all 
-in the \mintinline{java}{Driver} class and clear out the list 
-between each one.
 
 \begin{enumerate}
-  \item Implement all the methods of the \mintinline{java}{TruckList} 
-  class as specified.  Demonstrate your working code by creating a 
-  list in the \mintinline{java}{Driver} class, adding 10 random 
-  trucks, and print it out. 
-
-  \item Write test cases to test the insertion of trucks.
+  \item Activity 1: Modify the Fibonacci code as specified 
+  and answer the following questions
   \begin{enumerate}
-    \item Write a test case to successively add 3 trucks to 
-    the start of the list
-    \item Write a test case to successively add 3 trucks to 
-    the end of the list
-    \item Write a test case to add 6 trucks, alternately to 
-    the start, then to the end of the list 
+    \item When computing \mintinline{java}{fibonacci(10)}, how 
+    many times would fibonacci(5) be called?
+    \item When computing \mintinline{java}{fibonacci(20)}, how 
+    many times would \mintinline{java}{fibonacci(10)} be called?
+    \item How long does it take for \mintinline{java}{fibonacci(45)} 
+    to execute?
+    \item Give an estimate of an asymptotic characterization 
+    of the number of times the function is called when 
+    \mintinline{java}{fibonacci(n)} is computed: is it 
+    constant, linear, quadratic, cubic, or exponential?
   \end{enumerate}
-
-  \item Write test cases to test the removal of trucks.
+  
+  \item Activity 3: Modify the code that renders the Sierpinski 
+  Triangle as described in Case Study 3 and answer the following 
+  questions.
   \begin{enumerate}
-    \item Write a test case to add 3 trucks to the list and 
-    remove the first one
-    \item Write a test case to add 3 trucks to the list and 
-    remove the last one
-    \item Write a test case to add five trucks to the list 
-    and remove, in sequence the middle truck, the last truck, 
-    the first truck, the last truck, the first truck.
+    \item For a depth of 4 (\mintinline{java}{recursions = 4}), 
+    how many triangles are drawn?
+    \item For a depth of 10, how many triangles are drawn?    
+    \item For a depth of 13, how many triangles are drawn??    \item (Optional) Without actually running it (the application 
+    will most likely crash), can you determine how many triangles 
+    are drawn for a depth of 20?
   \end{enumerate}
-
-  \item Identify at least 3 ``corner cases'' that should be 
-  tested and write test cases for them.  Describe your test 
-  cases and the results below.
+  
+  \item Activity 4: Demonstrate your working program, what are 
+  the first 5 and last 5 digits of the 1000-th Pell Number?
 \end{enumerate}
 
 Lab Instructor Signature\underline{\hspace{7.5cm}}
