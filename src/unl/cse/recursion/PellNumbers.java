@@ -22,6 +22,6 @@ public class PellNumbers {
 		
 		int n = 9;
 		BigInteger p_n = PellNumber(n);
-		System.out.println("p("+n+") = "+p_n.toString());
+		System.out.printf("p(%d) = %s\n", n, p_n.toString());
 	}
 }
