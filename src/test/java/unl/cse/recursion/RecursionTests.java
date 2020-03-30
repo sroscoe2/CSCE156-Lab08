@@ -8,41 +8,51 @@ import java.time.Duration;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class RecursionTests {
+    /**
+     * Test that the {@link Palindrome} class performs its task adequately through a wide range of strings that may or
+     * may not be palindromes
+     */
     @Test
     void isPalindromeTest() {
         Palindrome palindromeTester = new Palindrome();
-        assertTrue(palindromeTester.isPalindrome("tacocat"));
-        assertTrue(palindromeTester.isPalindrome("mom"));
-        assertTrue(palindromeTester.isPalindrome("dad"));
-        assertTrue(palindromeTester.isPalindrome("lol"));
-        assertTrue(palindromeTester.isPalindrome("a"));
-        assertTrue(palindromeTester.isPalindrome(""));
-        assertTrue(palindromeTester.isPalindrome("aaaa"));
-        assertTrue(palindromeTester.isPalindrome("live evil"));
-        assertTrue(palindromeTester.isPalindrome("graarg"));
-        assertTrue(palindromeTester.isPalindrome("madam"));
-        assertTrue(palindromeTester.isPalindrome("radar"));
-        assertTrue(palindromeTester.isPalindrome("reviver"));
-        assertTrue(palindromeTester.isPalindrome("rotator"));
-        assertTrue(palindromeTester.isPalindrome("1010101010101"));
+        assertTrue(palindromeTester.isPalindrome("tacocat"), "'tacocat' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("mom"), "'mom' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("dad"), "'dad' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("lol"), "'lol' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("a"), "'a' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome(""), "the emoty string is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("aaaa"), "'aaaa' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("live evil"), "'live evil' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("graarg"), "'graarg' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("madam"), "'madam' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("radar"), "'radar' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("reviver"), "'reviver' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("rotator"), "'rotator' is a palindrome");
+        assertTrue(palindromeTester.isPalindrome("1010101010101"), "'1010101010101' is a palindrome");
 
-        assertFalse(palindromeTester.isPalindrome("Bourke"));
-        assertFalse(palindromeTester.isPalindrome("CSCE156"));
-        assertFalse(palindromeTester.isPalindrome("Java"));
-        assertFalse(palindromeTester.isPalindrome("tac ocat"));
-        assertFalse(palindromeTester.isPalindrome("WebGrader"));
-        assertFalse(palindromeTester.isPalindrome("This, most certainly, is not a palindromic sentence."));
+        assertFalse(palindromeTester.isPalindrome("Bourke"), "'Bourke' is not a palindrome");
+        assertFalse(palindromeTester.isPalindrome("CSCE156"), "'CSCE156' is not a palindrome");
+        assertFalse(palindromeTester.isPalindrome("Java"), "'Java' is not a palindrome");
+        assertFalse(palindromeTester.isPalindrome("tac ocat"), "'tac ocat' is not a palindrome");
+        assertFalse(palindromeTester.isPalindrome("WebGrader"), "'WebGrader' is not a palindrome");
+        assertFalse(palindromeTester.isPalindrome("This, most certainly, is not a palindromic sentence."),
+                    "'This, most certainly, is not a palindromic sentence.' speaks for itself. It's not a palindrome");
     }
 
+    /**
+     * Tests the output of {@link PellNumbers} for n values between 1 and 2310. Test must complete within 60 seconds,
+     * or else it will time out. This is put in place to prevent un-memoized methods from running for extended periods
+     * of time
+     */
     @Test
     void pellNumberTest() {
         assertTimeout(Duration.ofSeconds(60), () -> {
-            assertEquals(BigInteger.valueOf(1), PellNumbers.PellNumber(1));
-            assertEquals(BigInteger.valueOf(2), PellNumbers.PellNumber(2));
-            assertEquals(BigInteger.valueOf(5), PellNumbers.PellNumber(3));
-            assertEquals(BigInteger.valueOf(12), PellNumbers.PellNumber(4));
-            assertEquals(BigInteger.valueOf(985), PellNumbers.PellNumber(9));
-            assertEquals(BigInteger.valueOf(15994428), PellNumbers.PellNumber(20));
+            assertEquals(BigInteger.valueOf(1), PellNumbers.PellNumber(1), String.format("When n = %d, Pell's number is %d", 1, 1));
+            assertEquals(BigInteger.valueOf(2), PellNumbers.PellNumber(2), String.format("When n = %d, Pell's number is %d", 2, 2));
+            assertEquals(BigInteger.valueOf(5), PellNumbers.PellNumber(3), String.format("When n = %d, Pell's number is %d", 3, 5));
+            assertEquals(BigInteger.valueOf(12), PellNumbers.PellNumber(4), String.format("When n = %d, Pell's number is %d", 4, 12));
+            assertEquals(BigInteger.valueOf(985), PellNumbers.PellNumber(9), String.format("When n = %d, Pell's number is %d", 9, 985));
+            assertEquals(BigInteger.valueOf(15994428), PellNumbers.PellNumber(20), String.format("When n = %d, Pell's number is %d", 20, 15994428));
 
             assertEquals(new BigInteger("66992092050551637663438906713182313772"), PellNumbers.PellNumber(100));
             assertEquals(new BigInteger("21093096734545788527500836634727099588489384390319004814017810623293211815789" +
@@ -50,7 +60,7 @@ public class RecursionTests {
                             "857975982438181087665615915626282432004505944399554607844270641892800758687636009968274277222" +
                             "295140088568054131815535180156183128363609909859421735474877635959333893583537947135921530940" +
                             "258496573995974651586025272"),
-                    PellNumbers.PellNumber(1000));
+                    PellNumbers.PellNumber(1000), String.format("When n = %d, Pell's number is %s", 1000, "2109...272"));
             assertEquals(new BigInteger("57582184532906785293777829954840254162930685491127185215437992984021607144389" +
                             "2297440763538244388702558773203675583398926090031865726959212909172272001117459665245717927477" +
                             "1161189503230929793540801662005078203227497856565383743430795146861082399982194609383725267843" +
@@ -61,7 +71,7 @@ public class RecursionTests {
                             "0444868985121173081393350307071539871580541558915330543952140639950439116213430257787263502393" +
                             "3454561917529043962226463194500591072542867756539720689357690167053203104873727961224316594081" +
                             "9545306414229147583130126048527155410190534814263066950"),
-                    PellNumbers.PellNumber(2310));
+                    PellNumbers.PellNumber(2310), String.format("When n = %d, Pell's number is %s", 2310, "575...950"));
         }, "Did you forget to memoize Pell?");
     }
 }
