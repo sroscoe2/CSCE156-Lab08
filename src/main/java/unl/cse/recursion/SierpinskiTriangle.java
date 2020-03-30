@@ -52,7 +52,6 @@ public class SierpinskiTriangle extends JFrame {
 		@Override
 		public void paintComponent(Graphics g) {
 			int recursions = 10;
-			System.out.printf("%f triangles\n", Math.pow(3, recursions));
 			// call the recursive function sending in the number of recursions
 			g.setColor(new Color(0, 255, 0));
 			SeirpTri(g, 319, 0, 0, 479, 639, 479, recursions);
