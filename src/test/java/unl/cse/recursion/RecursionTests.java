@@ -68,7 +68,8 @@ public class RecursionTests {
     void isPalindromeRecursionTest() {
         Palindrome palindromeTester = new Palindrome();
         try {
-            palindromeTester.isPalindrome("a".repeat(stackDepth));
+            // double depth to allow for overflow
+            palindromeTester.isPalindrome("a".repeat(stackDepth * 2));
             fail("Must implement this function using recursion");
         } catch (StackOverflowError ignored){}
     }
