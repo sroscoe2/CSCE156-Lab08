@@ -1,13 +1,35 @@
 package unl.cse.recursion;
 
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
 import java.math.BigInteger;
 import java.time.Duration;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTimeout;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.fail;
+
 
 public class RecursionTests {
+    private static int stackDepth = 0;
+    
+    @BeforeAll
+    static void stackDepthCounter() {
+        try {
+            stackDepthCounterRecurser();
+        } catch (StackOverflowError ignored) { }
+        stackDepth += 5;
+    }
+
+    private static void stackDepthCounterRecurser() {
+        stackDepth++;
+        stackDepthCounterRecurser();
+    }
+
+
     /**
      * Test that the {@link Palindrome} class performs its task adequately through a wide range of strings that may or
      * may not be palindromes
@@ -20,7 +42,7 @@ public class RecursionTests {
         assertTrue(palindromeTester.isPalindrome("dad"), "'dad' is a palindrome");
         assertTrue(palindromeTester.isPalindrome("lol"), "'lol' is a palindrome");
         assertTrue(palindromeTester.isPalindrome("a"), "'a' is a palindrome");
-        assertTrue(palindromeTester.isPalindrome(""), "the emoty string is a palindrome");
+        assertTrue(palindromeTester.isPalindrome(""), "the empty string is a palindrome");
         assertTrue(palindromeTester.isPalindrome("aaaa"), "'aaaa' is a palindrome");
         assertTrue(palindromeTester.isPalindrome("live evil"), "'live evil' is a palindrome");
         assertTrue(palindromeTester.isPalindrome("graarg"), "'graarg' is a palindrome");
@@ -36,7 +58,20 @@ public class RecursionTests {
         assertFalse(palindromeTester.isPalindrome("tac ocat"), "'tac ocat' is not a palindrome");
         assertFalse(palindromeTester.isPalindrome("WebGrader"), "'WebGrader' is not a palindrome");
         assertFalse(palindromeTester.isPalindrome("This, most certainly, is not a palindromic sentence."),
-                    "'This, most certainly, is not a palindromic sentence.' speaks for itself. It's not a palindrome");
+                "'This, most certainly, is not a palindromic sentence.' speaks for itself. It's not a palindrome");
+    }
+
+    /**
+     * Ensure isPalindrome is implemented recursively by attempting to force a stack overflow
+     */
+    @Test
+    void isPalindromeRecursionTest() {
+        Palindrome palindromeTester = new Palindrome();
+        try {
+            // double depth to allow for overflow
+            palindromeTester.isPalindrome("a".repeat(stackDepth * 2));
+            fail("Must implement this function using recursion");
+        } catch (StackOverflowError ignored){}
     }
 
     /**
@@ -73,5 +108,16 @@ public class RecursionTests {
                             "9545306414229147583130126048527155410190534814263066950"),
                     PellNumbers.PellNumber(2310), String.format("When n = %d, Pell's number is %s", 2310, "575...950"));
         }, "Did you forget to memoize Pell?");
+    }
+
+    /**
+     * Ensure PellNumber is implemented recursively by attempting to force a stack overflow
+     */
+    @Test
+    void pellNumberRecursionTest() {
+        try {
+            PellNumbers.PellNumber(stackDepth);
+            fail("Must implement this function using recursion");
+        } catch (StackOverflowError ignored){}
     }
 }
