@@ -26,8 +26,8 @@ public class SierpinskiTriangle extends JFrame {
 		public void SeirpTri(Graphics g, int x1, int y1, int x2, int y2, int x3, int y3, int n) {
 
 			if (n == 0) {
-				//pretty!
-				//g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
+				// pretty!
+				// g.setColor(new Color(r.nextInt(255), r.nextInt(255), r.nextInt(255)));
 				g.drawLine(x1, y1, x2, y2); // if n = 0 draw the triangle
 				g.drawLine(x2, y2, x3, y3);
 				g.drawLine(x3, y3, x1, y1);
